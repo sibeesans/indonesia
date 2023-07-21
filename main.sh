@@ -20,13 +20,13 @@ TANGGAL=$(date '+%Y-%m-%d')
 TIMES="10"
 NAMES=$(whoami)
 IMP="wget -q -O"    
-CHATID="1036440597"
+CHATID="5641321832"
 LOCAL_DATE="/usr/bin/"
 MYIP=$(wget -qO- ipinfo.io/ip)
 CITY=$(curl -s ipinfo.io/city)
 TIME=$(date +'%Y-%m-%d %H:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
-KEY="2145515560:AAE9WqfxZzQC-FYF1VUprICGNomVfv6OdTU"
+KEY="5621227316:AAFp_SxXGwD9NE0HgSBCU0sP4fsJmuo1YzE"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 REPO="https://raw.githubusercontent.com/Rerechan02/indo-ssh/main/"
 APT="apt-get -y install "
@@ -415,6 +415,7 @@ function install_all() {
 function finish(){
     TEXT="
 <u>INFORMATION VPS INSTALL SC</u>
+<u>SIBEEVPN TUNNELING SERVICE</u>
 <code>TIME    : </code><code>${TIME}</code>
 <code>IPVPS   : </code><code>${MYIP}</code>
 <code>DOMAIN  : </code><code>${domain}</code>
