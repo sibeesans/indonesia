@@ -346,30 +346,6 @@ function tambahan(){
     sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
 
     # > Tuned Device
-    tuned-adm profile network-latency
-    cat >/etc/msmtprc <<EOF
-defaults
-tls on
-tls_starttls on
-tls_trust_file /etc/ssl/certs/ca-certificates.crt
-account default
-host smtp.gmail.com
-port 587
-auth on
-user taibabihutan17@gmail.com
-from taibabihutan17@gmail.com
-password romanisti
-logfile ~/.msmtp.log
-EOF
-
-chgrp mail /etc/msmtprc
-chown 0600 /etc/msmtprc
-touch /var/log/msmtp.log
-chown syslog:adm /var/log/msmtp.log
-chmod 660 /var/log/msmtp.log
-ln -s /usr/bin/msmtp /usr/sbin/sendmail >/dev/null 2>&1
-ln -s /usr/bin/msmtp /usr/bin/sendmail >/dev/null 2>&1
-ln -s /usr/bin/msmtp /usr/lib/sendmail >/dev/null 2>&1
 print_ok "Selesai pemasangan modul tambahan"
 }
 
@@ -497,13 +473,6 @@ function finish(){
     echo "    │   - Full Orders For Various Services                │"
     echo "    └─────────────────────────────────────────────────────┘"
     secs_to_human "$(($(date +%s) - ${start}))"
-    # echo -ne "         ${YELLOW}Please Reboot Your Vps${FONT} (y/n)? "
-    # read REDDIR
-    # if [ "$REDDIR" == "${REDDIR#[Yy]}" ]; then
-    #     exit 0
-    # else
-    #     reboot
-    # fi
 }
 cd /tmp
 NEVERMORESSH
@@ -514,5 +483,11 @@ install_all
 finish  
 
 rm ~/.bash_history
-sleep 10
+sleep 5
+echo -e ""
+echo -ne "[ ${yell}WARNING${NC} ] reboot now ? (y/n)? "
+read answer
+if [ "$answer" == "${answer#[Yy]}" ] ;then
+exit 0
+else
 reboot
