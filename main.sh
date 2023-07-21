@@ -28,7 +28,7 @@ TIME=$(date +'%Y-%m-%d %H:%M:%S')
 RAMMS=$(free -m | awk 'NR==2 {print $2}')
 KEY="5621227316:AAFp_SxXGwD9NE0HgSBCU0sP4fsJmuo1YzE"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
-REPO="https://raw.githubusercontent.com/Rerechan02/indo-ssh/main/"
+REPO="https://raw.githubusercontent.com/sibeesans/indonesia/main/"
 APT="apt-get -y install "
 domain=$(cat /root/domain)
 start=$(date +%s)
@@ -140,7 +140,7 @@ function pasang_ssl() {
     mkdir /root/.acme.sh
     systemctl stop $STOPWEBSERVER
     systemctl stop nginx
-    curl https://raw.githubusercontent.com/Rerechan02/indo-ssh/main/acme.sh -o /root/.acme.sh/acme.sh
+    curl https://raw.githubusercontent.com/sibeesans/indonesia/main/acme.sh -o /root/.acme.sh/acme.sh
     chmod +x /root/.acme.sh/acme.sh
     /root/.acme.sh/acme.sh --upgrade --auto-upgrade
     /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
@@ -220,14 +220,6 @@ function install_slowdns(){
     chmod +x /tmp/nameserver
     bash /tmp/nameserver | tee /root/install.log
     print_success "SlowDNS"
-}
-
-### Install Rclone
-function pasang_rclone() {
-    print_install "Installing Rclone"
-    print_success "Installing Rclone"
-    curl "${REPO}bin/rclone" | bash >/dev/null 2>&1
-    print_success "Rclone"
 }
 
 ### Take Config
